@@ -1,0 +1,15 @@
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+  RewriteRule ^index\.html$ - [L]
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule . /index.html [L]
+</IfModule>
+
+# This part is for Passenger if the selector doesn't handle it
+<IfModule mod_passenger.c>
+  PassengerAppRoot /home/u265933834/hst-app/backend
+  PassengerAppType node
+  PassengerStartupFile server.js
+</IfModule>
